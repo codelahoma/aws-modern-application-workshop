@@ -1,8 +1,9 @@
-import boto3
+import argparse
 import json
 import logging
 from collections import defaultdict
-import argparse
+
+import boto3
 
 # create a DynamoDB client using boto3. The boto3 library will automatically
 # use the credentials associated with our ECS task role to communicate with
@@ -101,13 +102,13 @@ if __name__ == "__main__":
     value = args.value
 
     if args.filter and args.value:
-        print 'filter is '+args.filter
-        print 'value is '+args.value
+        print('filter is '+args.filter)
+        print('value is '+args.value)
 
-        print "Getting filtered values"
+        print("Getting filtered values")
         items = queryMysfitItems(args.filter, args.value)
     else:
-        print "Getting all values"
+        print("Getting all values")
         items = getAllMysfits()
 
-    print items
+    print(items)
